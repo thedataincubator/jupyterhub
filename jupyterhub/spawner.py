@@ -271,6 +271,14 @@ class Spawner(LoggingConfigurable):
         their server.
         """)
 
+    spawn_on_login = Bool(True,
+        help="""
+        Launch a Jupyter server for users when they login.
+
+        The server will not be launched if it is already running, if the user's
+        spawner is already pending, or if the spawner's options_form is non-empty.
+    """).tag(config=True)
+
     env_keep = List([
         'PATH',
         'PYTHONPATH',

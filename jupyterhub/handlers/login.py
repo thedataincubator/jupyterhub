@@ -89,7 +89,7 @@ class LoginHandler(BaseHandler):
                 status = yield user.spawner.poll()
                 already_running = (status is None)
             if not already_running and not user.spawner.options_form \
-                    and not user.spawner.pending:
+                    and not user.spawner.pending and user.spawner.spawn_on_login:
                 # logging in triggers spawn
                 yield self.spawn_single_user(user)
             self.redirect(self.get_next_url())
